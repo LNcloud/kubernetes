@@ -1,0 +1,24 @@
+# akms
+# YAML (Key : Value) Pair
+# Pod - v1
+# ReplicaSet - apps/v1
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: myreplicaset
+spec:
+ replicas: 2
+ selector:
+   matchLabels:
+     env: prod     
+ template:
+   metadata:
+     name: mypod
+     labels:
+       env: prod
+   spec:
+    containers:
+    - name: mycontainer
+      image: nginx
+      ports:
+      - containerPort: 80
